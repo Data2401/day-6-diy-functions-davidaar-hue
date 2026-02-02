@@ -1,64 +1,91 @@
 ---
 title: "In Class Lab - DIY Functions"
-author: "Dr. Shoemaker"
+author: "David Arogunjo"
 date: "DATA 2401"
 output: html_document
 ---
-**Note: Your exam will be in a similar format to this (RMarkdown File with Questions and Code chunks for your answers), so make sure you have the process for knitting to html working.** 
+
+**Note: Your exam will be in a similar format to this (RMarkdown File with Questions and Code chunks for your answers), so make sure you have the process for knitting to html working.**
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## In Class Activity 
-The questions from your notes today are below, please copy your answers them here! Then complete the two new tasks, and attempt the "hard mode" if you have time. 
+## In Class Activity
 
-1. Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent. 
+The questions from your notes today are below, please copy your answers them here! Then complete the two new tasks, and attempt the "hard mode" if you have time.
 
-```{R}
-
-
-```
-
-2. Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
-
-
-```{r}
-
-
-```
-
-
-3. Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0. 
+1.  Write your own function that takes the temperature in Fahrenheit as an argument and returns the Celcius equivalent.
 
 ```{R}
-
-
+fahrenheit_to_Celcius <- function(temp_f){
+    celcius <- (temp_f - 32)* 5/9
+  return(celcius)
+}
+fahrenheit_to_Celcius (68)
 ```
 
-4. Write a function that returns the absolute value of the number passed as an argument.
-   + Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary. 
-   
+2.  Expand that function so that it takes a temperature in Fahrenheit and a distance in feet and returns **both** the temperature in Celcius and the distance in meters (you'll likely need to remember the `c()` function!)
+
 ```{r}
-
+convert_temp_distance <- function(temp_f, distance_ft){
+  celcius <- (temp_f -32) * 5/9
+  meters <- distance_ft * 0.3048
+  return (c(celcius,meters))
+  
+}
+convert_temp_distance(10,37)
 
 ```
 
-5. Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string. 
-   + There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
-   
+3.  Write a function that prints out a statement of whether the number passed as an argument is positive, negative or 0.
+
+```{R}
+number_type <- function(x) {
+   if (x > 0){
+  print("this number is positve")
+}
+else if (x < 0){
+   print("this number is Negative")
+ 
+}
+else{
+  print( "the number is Zero")
+}
+}
+number_type(-2)
+
+```
+
+4.  Write a function that returns the absolute value of the number passed as an argument.
+    -   Don't use `abs()`. Use the flow from problem 1 and multiply by negative one as necessary.
+
 ```{r}
-
-
-
-```
-   
-   
-
-
-
-
-
+my_absolute <- function(x){
+  if (x < 0){
+    x <- x * -1
+  }
+}
+my_absolute(-12)
 
 ```
 
+5.  Hard mode: add an error check to that function that prints out the string "Please pass a numerical value to this function" if the user passes the function a string.
+    -   There are functions that check and return T/F: `is.numeric()` or `is.character()` would be relevant here
+
+```{r}
+my_absolute <- function(x){
+  if (!is.numeric(x)){
+    print("Please pass a numeric Value to this function ")
+  }
+else {
+  if (c < 0){
+    x <- x * -1
+  }
+  return((x))
+  }
+}
+my_absolute("hi")
+```
+
+\`\`\`
